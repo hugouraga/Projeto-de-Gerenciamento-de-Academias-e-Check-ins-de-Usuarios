@@ -33,7 +33,7 @@ Requisitos Funcionais - Aplicação de Gerenciamento de Academias Estilo Gympass
 ## Módulo de Cadastro e Autenticação
 
 1. **Cadastro de Usuários:**
-   - Os usuários podem se cadastrar na aplicação fornecendo informações básicas como nome, e-mail e senha.
+   - Os usuários podem se cadastrar na aplicação fornecendo informações básicas como e-mail e senha.
 
 2. **Autenticação:**
    - O sistema deve permitir que os usuários autentiquem-se utilizando suas credenciais cadastradas.
