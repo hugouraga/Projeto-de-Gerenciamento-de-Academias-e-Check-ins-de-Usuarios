@@ -14,7 +14,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@rocketseat/eslint-config": "2.1.0",
     "@types/node": "20.10.4",
+    "eslint": "8.55.0",
     "fastify": "4.24.3",
     "tsup": "8.0.1",
     "tsx": "4.6.2",
