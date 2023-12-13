@@ -9,4 +9,15 @@ export class PrismaRegisterUserRepository implements UserContractRepository {
     });
     return userResponse;
   }
+
+  async findByUserEmailOrCPF(email: string, cpf: string) {
+    const user = await prisma.user.findFirst({
+      where: {
+        email,
+        cpf,
+      },
+    });
+
+    return user;
+  }
 }
