@@ -9,8 +9,8 @@ describe('user creation', () => {
 
     const { user } = await registerUseCase.execute({
       name: 'Hugo Uraga',
-      email: 'hugouraga61@gmail.com',
-      cpf: '11822760402',
+      email: 'hugouraga@gmail.com',
+      cpf: '604.558.810-06',
       password: '123456',
     });
 
@@ -23,16 +23,16 @@ describe('user creation', () => {
 
     await registerUseCase.execute({
       name: 'Hugo Uraga',
-      email: 'hugouraga61@gmail.com',
-      cpf: '11822760402',
+      email: 'hugouraga@gmail.com',
+      cpf: '604.558.810-06',
       password: '123456',
     });
 
     expect(async () => {
       await registerUseCase.execute({
         name: 'Hugo Uraga',
-        email: 'hugouraga61@gmail.com',
-        cpf: '11822760402',
+        email: 'hugouraga@gmail.com',
+        cpf: '604.558.810-06',
         password: '123456',
       });
     }).rejects.toThrowError();
