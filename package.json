@@ -1,0 +1,13 @@
+{
+  "name": "api-solid",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "## Descrição: Aplicação para gerenciamento de academias e de check-ins dos usuários.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

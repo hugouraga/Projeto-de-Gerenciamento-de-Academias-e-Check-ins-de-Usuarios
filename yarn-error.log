@@ -1,0 +1,48 @@
+Arguments: 
+  /Users/hugouraga/.nvm/versions/node/v16.20.2/bin/node /opt/homebrew/bin/yarn add typscript @types/node tsx -D
+
+PATH: 
+  /Users/hugouraga/.nvm/versions/node/v16.20.2/bin:/opt/homebrew/opt/node@16/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/Users/hugouraga/.nvm/versions/node/v16.20.2/bin:/opt/homebrew/opt/node@16/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/hugouraga/.fig/bin:/Users/hugouraga/.local/bin:/usr/local/opt/node@18/bin:/Users/hugouraga/Android/Sdk/emulator:/Users/hugouraga/Android/Sdk/tools:/Users/hugouraga/Android/Sdk/tools/bin:/Users/hugouraga/Android/Sdk/platform-tools:/usr/local/opt/node@18/bin:/Users/hugouraga/Android/Sdk/emulator:/Users/hugouraga/Android/Sdk/tools:/Users/hugouraga/Android/Sdk/tools/bin:/Users/hugouraga/Android/Sdk/platform-tools
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  16.20.2
+
+Platform: 
+  darwin arm64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/typscript: Not found
+      at Request.params.callback [as _callback] (/opt/homebrew/lib/node_modules/yarn/lib/cli.js:66145:18)
+      at Request.self.callback (/opt/homebrew/lib/node_modules/yarn/lib/cli.js:140890:22)
+      at Request.emit (node:events:513:28)
+      at Request.<anonymous> (/opt/homebrew/lib/node_modules/yarn/lib/cli.js:141862:10)
+      at Request.emit (node:events:513:28)
+      at IncomingMessage.<anonymous> (/opt/homebrew/lib/node_modules/yarn/lib/cli.js:141784:12)
+      at Object.onceWrapper (node:events:627:28)
+      at IncomingMessage.emit (node:events:525:35)
+      at endReadableNT (node:internal/streams/readable:1358:12)
+      at processTicksAndRejections (node:internal/process/task_queues:83:21)
+
+npm manifest: 
+  {
+    "name": "api-solid",
+    "type": "module",
+    "version": "1.0.0",
+    "description": "## Descrição: Aplicação para gerenciamento de academias e de check-ins dos usuários.",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
