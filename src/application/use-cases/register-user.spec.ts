@@ -18,6 +18,7 @@ describe('user creation', () => {
       email: 'hugouraga@gmail.com',
       cpf: '604.558.810-06',
       password: '123456',
+      typeUserId: 1,
     });
     expect(user.name).toBe('Hugo Uraga');
   });
@@ -28,6 +29,7 @@ describe('user creation', () => {
       email: 'hugouraga@gmail.com',
       cpf: '604.558.810-06',
       password: '123456',
+      typeUserId: 1,
     });
 
     expect(async () => {
@@ -36,6 +38,7 @@ describe('user creation', () => {
         email: 'hugouraga@gmail.com',
         cpf: '604.558.810-06',
         password: '123456',
+        typeUserId: 1,
       });
     }).rejects.toThrowError('user already exists');
   });
@@ -47,6 +50,7 @@ describe('user creation', () => {
         email: 'hugouraga61@gmail.com',
         cpf: '11822760402',
         password: '1234',
+        typeUserId: 1,
       });
     }).rejects.toThrowError('password must be at least 6 characters');
   });

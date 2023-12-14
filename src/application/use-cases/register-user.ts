@@ -5,7 +5,7 @@ import bcrypt from 'bcrypt';
 export class RegisterUserUseCase {
   constructor(private userRepository: UserContractRepository) {}
 
-  async execute(userRequest: Prisma.UserCreateInput) {
+  async execute(userRequest: Prisma.UserUncheckedCreateInput) {
     if (userRequest.password.length < 6) throw new Error('password must be at least 6 characters');
     const isUserExist = await this.userRepository.findByUserEmailOrCPF(
       userRequest.email,
@@ -18,6 +18,7 @@ export class RegisterUserUseCase {
       email: userRequest.email,
       name: userRequest.name,
       password: passwordHash,
+      typeUserId: 1,
     });
     return { user };
   }

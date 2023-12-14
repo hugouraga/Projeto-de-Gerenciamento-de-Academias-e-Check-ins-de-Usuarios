@@ -4,7 +4,7 @@ import { Prisma, User } from '@prisma/client';
 export class InMemoryUserRepository implements UserContractRepository {
   private users: any[] = [];
 
-  async save(user: Prisma.UserCreateInput): Promise<any> {
+  async save(user: Prisma.UserUncheckedCreateInput): Promise<any> {
     this.users.push(user);
     return user;
   }

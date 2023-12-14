@@ -20,6 +20,7 @@ describe('get user profile', () => {
       email: 'hugouraga@gmail.com',
       cpf: '604.558.810-06',
       password: await hash('123456', 6),
+      typeUserId: 1,
     });
 
     const { user } = await getUserProfile.execute({
