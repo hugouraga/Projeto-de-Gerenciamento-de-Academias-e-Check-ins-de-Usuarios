@@ -28,7 +28,7 @@ Estamos entusiasmados em apresentar esse projeto que não apenas resolve desafio
 
 ## Requisios funcionais
 
-Requisitos Funcionais - Aplicação de Gerenciamento de Academias Estilo Gympass
+Requisitos Funcionais - Aplicação Estilo Gympass
 
 ## Módulo de Cadastro e Autenticação
 
