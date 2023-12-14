@@ -19,9 +19,9 @@ export class AuthenticateUseCase {
     password,
   }: AuthenticateUseCaseRequest): Promise<AuthenticateUseCaseResponse> {
     const user = await this.userRepository.findUserByEmail(email);
-    if (!user) throw new Error('invalid user credentials');
+    if (!user) throw new Error('invalid credentials error');
     const isPasswordCorrectlyHashed = await bcrypt.compare(password, user.password);
-    if (!isPasswordCorrectlyHashed) throw new Error('invalid user credentials');
+    if (!isPasswordCorrectlyHashed) throw new Error('invalid credentials error');
 
     return { user };
   }
