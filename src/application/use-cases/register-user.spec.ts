@@ -1,12 +1,17 @@
 import { InMemoryUserRepository } from '@/tests/repositories/in-memory-user.repository';
-import { it, describe, expect } from 'vitest';
+import { it, describe, expect, beforeEach } from 'vitest';
 import { RegisterUserUseCase } from './register-user';
 
-describe('user creation', () => {
-  it('should be possible for the user to register', async () => {
-    const userRepository = new InMemoryUserRepository();
-    const registerUseCase = new RegisterUserUseCase(userRepository);
+let userRepository: InMemoryUserRepository;
+let registerUseCase: RegisterUserUseCase;
 
+describe('user creation', () => {
+  beforeEach(() => {
+    userRepository = new InMemoryUserRepository();
+    registerUseCase = new RegisterUserUseCase(userRepository);
+  });
+
+  it('should be possible for the user to register', async () => {
     const { user } = await registerUseCase.execute({
       name: 'Hugo Uraga',
       email: 'hugouraga@gmail.com',
@@ -17,9 +22,6 @@ describe('user creation', () => {
   });
 
   it('should not be possible to create an account with an existing email address or cpf', async () => {
-    const userRepository = new InMemoryUserRepository();
-    const registerUseCase = new RegisterUserUseCase(userRepository);
-
     await registerUseCase.execute({
       name: 'Hugo Uraga',
       email: 'hugouraga@gmail.com',
@@ -38,9 +40,6 @@ describe('user creation', () => {
   });
 
   it('should not be possible to create an account with a password of less than 6 digits', () => {
-    const userRepository = new InMemoryUserRepository();
-    const registerUseCase = new RegisterUserUseCase(userRepository);
-
     expect(async () => {
       await registerUseCase.execute({
         name: 'Hugo Uraga',
