@@ -55,7 +55,7 @@ Requisitos Funcionais - Aplicação Estilo Gympass
    - Usuários podem agendar atividades específicas em uma academia, como aulas ou uso de equipamentos.
 
 7. **Check-in:**
-   - O sistema deve permitir que os usuários realizem check-ins nas academias no momento agendado.
+   - O sistema deve permitir que os usuários realizem check-ins nas academias quando estiverem com menos de 100 metros de distância da academia.
 
 8. **Histórico de Atividades:**
    - Os usuários podem visualizar um histórico de suas atividades anteriores, incluindo check-ins e agendamentos.
