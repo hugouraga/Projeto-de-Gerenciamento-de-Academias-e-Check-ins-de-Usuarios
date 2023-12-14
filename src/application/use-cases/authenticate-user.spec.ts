@@ -33,7 +33,7 @@ describe('user authentication', async () => {
         email: 'hugouraga@gmail.com',
         password: '123456',
       });
-    }).rejects.toThrowError('invalid user credentials');
+    }).rejects.toThrowError('invalid credentials error');
   });
 
   it('should not allow authentication for invalid password', async () => {
@@ -51,6 +51,6 @@ describe('user authentication', async () => {
         email: 'hugouraga@gmail.com',
         password: '222222',
       });
-    }).rejects.toThrowError('invalid user credentials');
+    }).rejects.toThrowError('invalid credentials error');
   });
 });
