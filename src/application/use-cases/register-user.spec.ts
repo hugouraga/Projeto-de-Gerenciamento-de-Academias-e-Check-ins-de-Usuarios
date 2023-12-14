@@ -13,7 +13,6 @@ describe('user creation', () => {
       cpf: '604.558.810-06',
       password: '123456',
     });
-
     expect(user.name).toBe('Hugo Uraga');
   });
 
@@ -35,7 +34,7 @@ describe('user creation', () => {
         cpf: '604.558.810-06',
         password: '123456',
       });
-    }).rejects.toThrowError();
+    }).rejects.toThrowError('user already exists');
   });
 
   it('should not be possible to create an account with a password of less than 6 digits', () => {
@@ -49,6 +48,6 @@ describe('user creation', () => {
         cpf: '11822760402',
         password: '1234',
       });
-    }).rejects.toThrowError();
+    }).rejects.toThrowError('password must be at least 6 characters');
   });
 });

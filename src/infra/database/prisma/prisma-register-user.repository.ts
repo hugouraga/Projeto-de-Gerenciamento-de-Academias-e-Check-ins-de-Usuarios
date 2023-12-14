@@ -1,4 +1,4 @@
-import { UserContractRepository } from '@/application/repositories/user-contract.respository';
+import { UserContractRepository } from '@/application/repositories/user-contract.repository';
 import { Prisma } from '@prisma/client';
 import { prisma } from '@/infra/lib/prisma';
 
@@ -15,6 +15,16 @@ export class PrismaRegisterUserRepository implements UserContractRepository {
       where: {
         email,
         cpf,
+      },
+    });
+
+    return user;
+  }
+
+  async findUserByEmail(email: string) {
+    const user = await prisma.user.findFirst({
+      where: {
+        email,
       },
     });
 

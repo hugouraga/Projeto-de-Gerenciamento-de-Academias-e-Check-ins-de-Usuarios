@@ -1,14 +1,24 @@
 import { Prisma } from '@prisma/client';
-import { UserContractRepository } from '../repositories/user-contract.respository';
+import { UserContractRepository } from '../repositories/user-contract.repository';
+import bcrypt from 'bcrypt';
 
 export class RegisterUserUseCase {
   constructor(private userRepository: UserContractRepository) {}
 
-  async execute(newUser: Prisma.UserCreateInput) {
-    if (newUser.password.length < 6) throw new Error('password must be at least 6 characters');
-    const isUserExist = await this.userRepository.findByUserEmailOrCPF(newUser.email, newUser.cpf);
+  async execute(userRequest: Prisma.UserCreateInput) {
+    if (userRequest.password.length < 6) throw new Error('password must be at least 6 characters');
+    const isUserExist = await this.userRepository.findByUserEmailOrCPF(
+      userRequest.email,
+      userRequest.cpf,
+    );
     if (isUserExist) throw new Error('user already exists');
-    const user = await this.userRepository.save(newUser);
+    const passwordHash = await bcrypt.hash(userRequest.password, 6);
+    const user = await this.userRepository.save({
+      cpf: userRequest.cpf,
+      email: userRequest.email,
+      name: userRequest.name,
+      password: passwordHash,
+    });
     return { user };
   }
 }
