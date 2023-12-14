@@ -1,13 +1,19 @@
 import { InMemoryUserRepository } from '@/tests/repositories/in-memory-user.repository';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, beforeEach } from 'vitest';
 import { RegisterUserUseCase } from './register-user';
 import { AuthenticateUseCase } from './authenticate-user';
 import { hash } from 'bcrypt';
 
+let userRepository: InMemoryUserRepository;
+let authenticateUseCase: AuthenticateUseCase;
+
 describe('user authentication', async () => {
+  beforeEach(() => {
+    userRepository = new InMemoryUserRepository();
+    authenticateUseCase = new AuthenticateUseCase(userRepository);
+  });
+
   it('should be possible for the user to authenticate', async () => {
-    const userRepository = new InMemoryUserRepository();
-    const authenticateUseCase = new AuthenticateUseCase(userRepository);
     await userRepository.save({
       name: 'Hugo Uraga',
       email: 'hugouraga@gmail.com',
@@ -25,9 +31,6 @@ describe('user authentication', async () => {
   });
 
   it('should not allow authentication for invalid email', async () => {
-    const userRepository = new InMemoryUserRepository();
-    const authenticateUseCase = new AuthenticateUseCase(userRepository);
-
     expect(async () => {
       await authenticateUseCase.execute({
         email: 'hugouraga@gmail.com',
@@ -37,8 +40,6 @@ describe('user authentication', async () => {
   });
 
   it('should not allow authentication for invalid password', async () => {
-    const userRepository = new InMemoryUserRepository();
-    const authenticateUseCase = new AuthenticateUseCase(userRepository);
     await userRepository.save({
       name: 'Hugo Uraga',
       email: 'hugouraga@gmail.com',
