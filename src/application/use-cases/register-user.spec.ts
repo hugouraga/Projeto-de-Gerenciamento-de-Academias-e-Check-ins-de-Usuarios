@@ -1,6 +1,7 @@
 import { InMemoryUserRepository } from '@/tests/repositories/in-memory-user.repository';
 import { it, describe, expect, beforeEach } from 'vitest';
 import { RegisterUserUseCase } from './register-user';
+import { randomUUID } from 'crypto';
 
 let userRepository: InMemoryUserRepository;
 let registerUseCase: RegisterUserUseCase;

@@ -4,30 +4,18 @@ import { prisma } from '@/infra/lib/prisma';
 
 export class PrismaRegisterUserRepository implements UserContractRepository {
   async save(user: Prisma.UserCreateInput): Promise<any> {
-    const userResponse = await prisma.user.create({
-      data: user,
-    });
-    return userResponse;
+    return await prisma.user.create({ data: user });
   }
 
   async findByUserEmailOrCPF(email: string, cpf: string) {
-    const user = await prisma.user.findFirst({
-      where: {
-        email,
-        cpf,
-      },
-    });
-
-    return user;
+    return await prisma.user.findFirst({ where: { email, cpf } });
   }
 
   async findUserByEmail(email: string) {
-    const user = await prisma.user.findFirst({
-      where: {
-        email,
-      },
-    });
+    return await prisma.user.findFirst({ where: { email } });
+  }
 
-    return user;
+  async findById(userId: string) {
+    return await prisma.user.findFirst({ where: { id: userId } });
   }
 }

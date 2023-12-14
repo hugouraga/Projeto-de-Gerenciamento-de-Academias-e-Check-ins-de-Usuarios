@@ -4,7 +4,7 @@ import { Prisma, User } from '@prisma/client';
 export class InMemoryUserRepository implements UserContractRepository {
   private users: any[] = [];
 
-  async save(user: any): Promise<any> {
+  async save(user: Prisma.UserCreateInput): Promise<any> {
     this.users.push(user);
     return user;
   }
@@ -15,5 +15,9 @@ export class InMemoryUserRepository implements UserContractRepository {
 
   async findUserByEmail(email: string) {
     return this.users.find((user) => user.email === email);
+  }
+
+  findById(userId: string) {
+    return this.users.find((user) => user.id === userId);
   }
 }
