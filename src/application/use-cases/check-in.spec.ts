@@ -61,7 +61,7 @@ describe('user check-in', () => {
   });
 
   it('should be possible to check-in', async () => {
-    const { checkIn } = await checkInUseCase.execute(user.id, gym.id);
+    const { checkIn } = await checkInUseCase.execute(user.id, gym.id, '-8.1166336', '-34.89792');
 
     expectTypeOf(checkIn.gymId).toBeString();
     expect(checkIn.gymId).toBe(gym.id);
@@ -70,30 +70,36 @@ describe('user check-in', () => {
 
   it('should not be possible to check in with an invalid user', async () => {
     expect(async () => {
-      await checkInUseCase.execute('id-user-not-found', gym.id);
+      await checkInUseCase.execute('id-user-not-found', gym.id, '-8.1166336', '-34.89792');
     }).rejects.toThrowError('User not found');
   });
 
   it('should not be possible to check in with an invalid gym', async () => {
     expect(async () => {
-      await checkInUseCase.execute(user.id, 'id-gym-not-found');
+      await checkInUseCase.execute(user.id, 'id-gym-not-found', '-8.1166336', '-34.89792');
     }).rejects.toThrowError('Gym not found');
   });
 
   it('should not be possible to check in on the same day', async () => {
     vi.setSystemTime(new Date(2023, 11, 16, 8, 0, 0));
-    await checkInUseCase.execute(user.id, gym.id);
+    await checkInUseCase.execute(user.id, gym.id, '-8.1166336', '-34.89792');
     expect(async () => {
-      await checkInUseCase.execute(user.id, gym.id);
+      await checkInUseCase.execute(user.id, gym.id, '-8.1166336', '-34.89792');
     }).rejects.toThrowError('Check-in already on some day');
   });
 
   it('should be possible to check in on different days', async () => {
     vi.setSystemTime(new Date(2023, 11, 16, 23, 0, 0));
-    await checkInUseCase.execute(user.id, gym.id);
+    await checkInUseCase.execute(user.id, gym.id, '-8.1166336', '-34.89792');
     vi.setSystemTime(new Date(2023, 11, 17, 12, 45, 0));
-    const { checkIn } = await checkInUseCase.execute(user.id, gym.id);
+    const { checkIn } = await checkInUseCase.execute(user.id, gym.id, '-8.1166336', '-34.89792');
     expect(checkIn.userId).toBe(user.id);
     expect(checkIn.gymId).toBe(gym.id);
+  });
+
+  it('should not be able to check in on distant gym', async () => {
+    expect(async () => {
+      await checkInUseCase.execute(user.id, gym.id, '-8.1748082', '-34.9198751');
+    }).rejects.toThrowError();
   });
 });
