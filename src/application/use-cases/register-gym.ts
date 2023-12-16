@@ -1,15 +1,27 @@
-import { Prisma } from '@prisma/client';
+import { Gym, Prisma } from '@prisma/client';
 import { GymContractRepository } from '../repositories/gym-contract.repository';
+
+interface RegisterGymUseCaseRequest {
+  name: string;
+  cellphone: string;
+  cnpj: string;
+  email: string;
+  latitude: string;
+  longitude: string;
+}
+interface RegisterGymUseCaseResponse {
+  gym: Gym;
+}
 
 export class RegisterGymUseCase {
   constructor(private gymRepository: GymContractRepository) {}
 
-  async execute(gym: Prisma.GymCreateInput) {
-    const isGymFindCNPJ = await this.gymRepository.findByCNPJ(gym.cnpj);
+  async execute(registerGym: RegisterGymUseCaseRequest): Promise<RegisterGymUseCaseResponse> {
+    const isGymFindCNPJ = await this.gymRepository.findByCNPJ(registerGym.cnpj);
     if (isGymFindCNPJ) throw new Error('CNPJ already exists');
-    const isGymFindEmail = await this.gymRepository.findByEmail(gym.email);
+    const isGymFindEmail = await this.gymRepository.findByEmail(registerGym.email);
     if (isGymFindEmail) throw new Error('Email already exists');
-    const registerGym = await this.gymRepository.register(gym);
-    return registerGym;
+    const gym = await this.gymRepository.register(registerGym);
+    return { gym };
   }
 }

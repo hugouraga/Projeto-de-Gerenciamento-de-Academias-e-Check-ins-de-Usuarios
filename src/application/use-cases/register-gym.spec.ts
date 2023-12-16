@@ -28,7 +28,7 @@ describe('register gym', () => {
   });
 
   it('should be possible to register gym', async () => {
-    const gym = await registerGymUseCase.execute({
+    const { gym } = await registerGymUseCase.execute({
       name: 'academia node js',
       cellphone: '81999999999',
       cnpj: '97.755.075/0001-14',
