@@ -29,4 +29,9 @@ export class InMemoryCheckInRepository implements CheckInContractRepository {
     });
     return checkInOnSameDay ?? null;
   }
+
+  async findManyById(userId: string): Promise<Checkin[]> {
+    const checkIns: Checkin[] = this.checkIns.filter((checkIn) => checkIn.userId == userId);
+    return checkIns;
+  }
 }
