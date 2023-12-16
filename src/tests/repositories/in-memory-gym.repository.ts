@@ -35,4 +35,8 @@ export class InMemoryGymRepository implements GymContractRepository {
     const gym = this.gyms.find((gym) => gym.id === id);
     return gym ? gym : null;
   }
+
+  async searchMany(query: string, page: number): Promise<Gym[]> {
+    return this.gyms.filter((gym) => gym.name.includes(query)).slice(page - 1 * 20, page * 20);
+  }
 }

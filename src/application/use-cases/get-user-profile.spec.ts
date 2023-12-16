@@ -7,7 +7,7 @@ import { randomUUID } from 'node:crypto';
 let userRepository: InMemoryUserRepository;
 let getUserProfile: GetUserProfileUseCase;
 
-describe('get user profile', () => {
+describe('get user metrics', () => {
   beforeEach(() => {
     userRepository = new InMemoryUserRepository();
     getUserProfile = new GetUserProfileUseCase(userRepository);

@@ -9,22 +9,12 @@ import { RegisterGymUseCase } from './register-gym';
 let userRepository: InMemoryUserRepository;
 let gymRepository: InMemoryGymRepository;
 let registerGymUseCase: RegisterGymUseCase;
-let user: User;
 
 describe('register gym', () => {
   beforeEach(async () => {
     userRepository = new InMemoryUserRepository();
     gymRepository = new InMemoryGymRepository();
     registerGymUseCase = new RegisterGymUseCase(gymRepository);
-
-    user = await userRepository.create({
-      id: randomUUID(),
-      name: 'Hugo Uraga',
-      email: 'hugouraga@gmail.com',
-      cpf: '604.558.810-06',
-      password: await hash('123456', 6),
-      typeUserId: 1,
-    });
   });
 
   it('should be possible to register gym', async () => {
