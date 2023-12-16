@@ -22,7 +22,7 @@ Estamos utilizando diversas tecnologias modernas para construir uma base sólida
 
 ## Metodoligias Utilizadas
 
-- **TDD:** O projeto foi criado utilizando a a metodoligia do TDD e seguindo os passos de red, green and refactor. Trazendo uma maior segurança para criação dos nossos casos de uso.
+- **TDD:** O projeto foi criado utilizando a metodoligia do TDD e seguindo os passos de red, green and refactor. Trazendo uma maior segurança para criação dos nossos casos de uso.
 
 ## Destaques do Projeto
 
