@@ -34,4 +34,9 @@ export class InMemoryCheckInRepository implements CheckInContractRepository {
     const checkIns: Checkin[] = this.checkIns.filter((checkIn) => checkIn.userId == userId);
     return checkIns;
   }
+
+  async countByUserId(userId: string): Promise<number> {
+    const checkIns: Checkin[] = this.checkIns.filter((checkIn) => checkIn.userId == userId);
+    return checkIns.length;
+  }
 }
