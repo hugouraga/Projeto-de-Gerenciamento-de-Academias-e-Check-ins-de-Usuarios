@@ -55,6 +55,7 @@ describe('fetch user check-ins history', () => {
       latitude: '-8.1166336',
       longitude: '-34.89792',
     });
+
     await checkInRepository.create(user.id, gym.id);
     await checkInRepository.create(user.id, gym.id);
     checkIn = await checkInRepository.create(user.id, gym.id);
