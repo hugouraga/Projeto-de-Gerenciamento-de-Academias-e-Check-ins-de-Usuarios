@@ -41,11 +41,12 @@ enum Type {
 }
 
 model Checkin {
-  id     String @id @default(uuid())
-  gyn    Gym    @relation(fields: [gymId], references: [id])
-  gymId  String
-  user   User   @relation(fields: [userId], references: [id])
-  userId String
+  id        String   @id @default(uuid())
+  gyn       Gym      @relation(fields: [gymId], references: [id])
+  gymId     String
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  createdAt DateTime @default(now()) @map("created_at")
 
   @@map("checkins")
 }

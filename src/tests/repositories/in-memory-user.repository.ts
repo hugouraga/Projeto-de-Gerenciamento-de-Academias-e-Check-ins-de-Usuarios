@@ -5,7 +5,7 @@ import { randomUUID } from 'crypto';
 export class InMemoryUserRepository implements UserContractRepository {
   private users: User[] = [];
 
-  async create(data: Prisma.UserUncheckedCreateInput): Promise<any> {
+  async create(data: Prisma.UserUncheckedCreateInput): Promise<User> {
     const user: User = {
       id: randomUUID(),
       cpf: data.cpf,

@@ -1,5 +1,6 @@
-import { Checkin, Prisma } from '@prisma/client';
+import { Checkin } from '@prisma/client';
 
 export interface CheckInContractRepository {
-  create(data: Prisma.CheckinUncheckedCreateInput): Promise<Checkin | null>;
+  create(userId: string, gymId: string): Promise<Checkin>;
+  findByUserIdOnDate(userId: string, date: Date): Promise<any>;
 }

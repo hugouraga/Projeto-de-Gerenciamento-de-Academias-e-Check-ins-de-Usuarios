@@ -5,7 +5,7 @@ import { randomUUID } from 'crypto';
 export class InMemoryGymRepository implements GymContractRepository {
   private gyms: Gym[] = [];
 
-  async create(data: Prisma.GymUncheckedCreateInput): Promise<any> {
+  async create(data: Prisma.GymUncheckedCreateInput): Promise<Gym> {
     const gym: Gym = {
       id: randomUUID(),
       cellphone: data.cellphone,
@@ -28,6 +28,11 @@ export class InMemoryGymRepository implements GymContractRepository {
 
   async findByEmail(email: string) {
     const gym = this.gyms.find((gym) => gym.email === email);
+    return gym ? gym : null;
+  }
+
+  async findById(id: string) {
+    const gym = this.gyms.find((gym) => gym.id === id);
     return gym ? gym : null;
   }
 }
