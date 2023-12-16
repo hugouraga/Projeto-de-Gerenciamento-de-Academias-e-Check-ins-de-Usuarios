@@ -37,6 +37,6 @@ export class InMemoryGymRepository implements GymContractRepository {
   }
 
   async searchMany(query: string, page: number): Promise<Gym[]> {
-    return this.gyms.filter((gym) => gym.name.includes(query)).slice(page - 1 * 20, page * 20);
+    return this.gyms.filter((gym) => gym.name.includes(query)).slice((page - 1) * 20, page * 20);
   }
 }

@@ -34,4 +34,19 @@ describe('search gyms', () => {
     const gyms = await searchGym.execute('js', 1);
     expect(gyms.length).toEqual(2);
   });
+
+  it('should be able to fetch paginated gyms search', async () => {
+    for (let gymCount = 1; gymCount <= 22; gymCount++) {
+      await gymRepository.create({
+        name: 'academia node js',
+        cellphone: '81999999999',
+        cnpj: '97.755.075/0001-' + gymCount,
+        email: 'academianode@gmail.com' + gymCount,
+        latitude: '-8.1166336',
+        longitude: '-34.89792',
+      });
+    }
+    const gyms = await searchGym.execute('node', 2);
+    expect(gyms.length).toEqual(2);
+  });
 });
