@@ -1,4 +1,8 @@
-import { GymContractRepository } from '@/application/repositories/gym-contract.repository';
+import {
+  GymContractRepository,
+  findManyNearbyParams,
+} from '@/application/repositories/gym-contract.repository';
+import { getDistanceBetweenCoordinates } from '@/application/utils/get-distance-between-coordinates';
 import { Gym, Prisma } from '@prisma/client';
 import { randomUUID } from 'crypto';
 
@@ -38,5 +42,18 @@ export class InMemoryGymRepository implements GymContractRepository {
 
   async searchMany(query: string, page: number): Promise<Gym[]> {
     return this.gyms.filter((gym) => gym.name.includes(query)).slice((page - 1) * 20, page * 20);
+  }
+
+  async findManyNearby(params: findManyNearbyParams): Promise<Gym[]> {
+    const MAX_DISTANCE_IN_KM = 10;
+    const gyms: Gym[] = this.gyms.filter((gym) => {
+      const distanceOfBetweenUserAndGym = getDistanceBetweenCoordinates(
+        { latitude: params.userLatitude, longitude: params.userLongitude },
+        { latitude: gym.latitude, longitude: gym.longitude },
+      );
+      if (distanceOfBetweenUserAndGym <= MAX_DISTANCE_IN_KM) return gym;
+    });
+
+    return gyms;
   }
 }
