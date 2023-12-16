@@ -31,7 +31,7 @@ Estamos utilizando diversas tecnologias modernas para construir uma base sólida
 - **Desenvolvimento Orientado por Testes (TDD):** A construção do projeto foi guiada por técnicas de TDD, garantindo uma abordagem test-first para o desenvolvimento.
 - **Baixo Acoplamento:** Componentes e use cases foram desenvolvidos com baixo acoplamento, permitindo flexibilidade e facilitando a integração de novas funcionalidades.
 
-Estamos entusiasmados em apresentar esse projeto que não apenas resolve desafios práticos de gerenciamento de academias, mas também demonstra nossa experiência em tecnologias modernas e boas práticas de desenvolvimento. Sinta-se à vontade para explorar o código-fonte e contribuir para o crescimento deste projeto inovador!
+Estamos entusiasmados em apresentar esse projeto que não apenas resolve desafios práticos de gerenciamento de academias, mas também demonstra nossa experiência em tecnologias modernas e boas práticas de desenvolvimento.
 
 ## Requisios funcionais
 
