@@ -14,7 +14,7 @@ describe('user authentication', async () => {
   });
 
   it('should be possible for the user to authenticate', async () => {
-    await userRepository.save({
+    await userRepository.create({
       name: 'Hugo Uraga',
       email: 'hugouraga@gmail.com',
       cpf: '604.558.810-06',
@@ -41,7 +41,7 @@ describe('user authentication', async () => {
   });
 
   it('should not allow authentication for invalid password', async () => {
-    await userRepository.save({
+    await userRepository.create({
       name: 'Hugo Uraga',
       email: 'hugouraga@gmail.com',
       cpf: '604.558.810-06',

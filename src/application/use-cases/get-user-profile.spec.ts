@@ -14,7 +14,7 @@ describe('get user profile', () => {
   });
 
   it('should return the user is data if he is authenticated', async () => {
-    const createdUser = await userRepository.save({
+    const createdUser = await userRepository.create({
       id: randomUUID(),
       name: 'Hugo Uraga',
       email: 'hugouraga@gmail.com',

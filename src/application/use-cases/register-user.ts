@@ -13,7 +13,7 @@ export class RegisterUserUseCase {
     );
     if (isUserExist) throw new Error('user already exists');
     const passwordHash = await bcrypt.hash(userRequest.password, 6);
-    const user = await this.userRepository.save({
+    const user = await this.userRepository.create({
       cpf: userRequest.cpf,
       email: userRequest.email,
       name: userRequest.name,

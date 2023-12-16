@@ -17,7 +17,7 @@ describe('register gym', () => {
     gymRepository = new InMemoryGymRepository();
     registerGymUseCase = new RegisterGymUseCase(gymRepository);
 
-    user = await userRepository.save({
+    user = await userRepository.create({
       id: randomUUID(),
       name: 'Hugo Uraga',
       email: 'hugouraga@gmail.com',

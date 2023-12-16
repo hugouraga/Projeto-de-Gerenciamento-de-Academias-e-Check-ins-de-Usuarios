@@ -1,23 +1,34 @@
 import { UserContractRepository } from '@/application/repositories/user-contract.repository';
 import { Prisma, User } from '@prisma/client';
+import { randomUUID } from 'crypto';
 
 export class InMemoryUserRepository implements UserContractRepository {
-  private users: any[] = [];
+  private users: User[] = [];
 
-  async save(user: Prisma.UserUncheckedCreateInput): Promise<any> {
+  async create(data: Prisma.UserUncheckedCreateInput): Promise<any> {
+    const user: User = {
+      id: randomUUID(),
+      cpf: data.cpf,
+      email: data.email,
+      name: data.name,
+      password: data.password,
+      typeUserId: data.typeUserId,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    };
     this.users.push(user);
     return user;
   }
 
   async findByUserEmailOrCPF(email: string, cpf: string): Promise<User | null> {
-    return this.users.find((user) => user.email === email && user.cpf === cpf);
+    return this.users.find((user) => user.email === email && user.cpf === cpf) ?? null;
   }
 
   async findUserByEmail(email: string) {
-    return this.users.find((user) => user.email === email);
+    return this.users.find((user) => user.email === email) ?? null;
   }
 
-  findById(userId: string) {
-    return this.users.find((user) => user.id === userId);
+  async findById(userId: string) {
+    return this.users.find((user) => user.id === userId) ?? null;
   }
 }

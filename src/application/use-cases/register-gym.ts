@@ -21,7 +21,7 @@ export class RegisterGymUseCase {
     if (isGymFindCNPJ) throw new Error('CNPJ already exists');
     const isGymFindEmail = await this.gymRepository.findByEmail(registerGym.email);
     if (isGymFindEmail) throw new Error('Email already exists');
-    const gym = await this.gymRepository.register(registerGym);
+    const gym = await this.gymRepository.create(registerGym);
     return { gym };
   }
 }
