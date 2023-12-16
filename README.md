@@ -4,7 +4,9 @@ Bem-vindo ao repositório do projeto de gerenciamento de academias! Este projeto
 
 ## Objetivo Principal
 
-O principal objetivo desta iniciativa é aplicar e demonstrar práticas avançadas de arquitetura e design de software. O projeto adota conceitos como arquitetura hexagonal e clean architecture para garantir uma estrutura de código modular e escalável.
+O principal objetivo desta iniciativa é aplicar e demonstrar práticas avançadas de arquitetura e design de software. O projeto adota a arquitetura hexagonal para garantir uma estrutura de código modular e escalável.
+
+Em outros projetos iremos utilizar também clean architcture, para explorarmos as principais diferenças entre esses dois tipos de arquitetura/design.
 
 ## Tecnologias Utilizadas
 
@@ -16,6 +18,11 @@ Estamos utilizando diversas tecnologias modernas para construir uma base sólida
 - **Prisma ORM:** Facilitando a interação com o banco de dados PostgreSQL, garantindo eficiência e segurança.
 - **PostgreSQL:** Banco de dados utilizado para armazenar e gerenciar dados de forma robusta.
 - **Docker:** Utilizado para facilitar a configuração e o gerenciamento de ambientes de desenvolvimento e produção.
+- **Vitest:** Utilizado para realição do testes na aplicação, passando pelos testes unitário, testes de integração e testes end-to-end
+
+## Metodoligias Utilizadas
+
+- **TDD:** O projeto foi criado utilizando a a metodoligia do TDD e seguindo os passos de red, green and refactor. Trazendo uma maior segurança para criação dos nossos casos de uso.
 
 ## Destaques do Projeto
 
