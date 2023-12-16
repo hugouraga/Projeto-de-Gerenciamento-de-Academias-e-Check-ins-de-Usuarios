@@ -6,7 +6,7 @@ Bem-vindo ao repositório do projeto de gerenciamento de academias! Este projeto
 
 O principal objetivo desta iniciativa é aplicar e demonstrar práticas avançadas de arquitetura e design de software. O projeto adota a arquitetura hexagonal para garantir uma estrutura de código modular e escalável.
 
-Em outros projetos iremos utilizar também clean architcture, para explorarmos as principais diferenças entre esses dois tipos de arquitetura/design.
+Em outros projetos iremos utilizar também clean architecture, para explorarmos as principais diferenças entre esses dois tipos de arquitetura/design.
 
 ## Tecnologias Utilizadas
 
