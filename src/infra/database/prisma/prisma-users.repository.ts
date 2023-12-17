@@ -2,7 +2,7 @@ import { UserContractRepository } from '@/application/repositories/user-contract
 import { Prisma } from '@prisma/client';
 import { prisma } from '@/infra/lib/prisma';
 
-export class PrismaRegisterUserRepository implements UserContractRepository {
+export class PrismaRegisterUsersRepository implements UserContractRepository {
   async create(user: Prisma.UserUncheckedCreateInput): Promise<any> {
     return await prisma.user.create({ data: user });
   }
