@@ -16,6 +16,6 @@ export class PrismaRegisterUserRepository implements UserContractRepository {
   }
 
   async findById(userId: string) {
-    return await prisma.user.findFirst({ where: { id: userId } });
+    return await prisma.user.findUnique({ where: { id: userId } });
   }
 }
