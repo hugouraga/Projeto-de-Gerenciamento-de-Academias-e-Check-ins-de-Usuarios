@@ -3,7 +3,7 @@ import {
   findManyNearbyParams,
 } from '@/application/repositories/gym-contract.repository';
 import { prisma } from '@/infra/lib/prisma';
-import { Prisma } from '@prisma/client';
+import { Gym, Prisma } from '@prisma/client';
 
 export class PrismaGymsRepository implements GymContractRepository {
   async create(gym: Prisma.GymUncheckedCreateInput) {
@@ -25,7 +25,10 @@ export class PrismaGymsRepository implements GymContractRepository {
       skip: (page - 1) * 20,
     });
   }
-  async findManyNearby(params: findManyNearbyParams) {
-    return await prisma.gym.findMany({ take: 20, skip: 0 });
+  async findManyNearby({ userLatitude, userLongitude }: findManyNearbyParams) {
+    return await prisma.$queryRaw<Gym[]>`
+      SELECT * from gyms
+      WHERE ( 6371 * acos( cos( radians(${userLatitude}) ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(${userLongitude}) ) + sin( radians(${userLatitude}) ) * sin( radians( latitude ) ) ) ) <= 10
+    `;
   }
 }
