@@ -1,11 +1,11 @@
-import fastify from 'fastify';
-import { appRoutes } from './infra/http/routes';
-import fastifyJwt from '@fastify/jwt';
 import 'dotenv';
+import fastify from 'fastify';
+import fastifyJwt from '@fastify/jwt';
+import { appRoutes } from './infra/http/routes';
 
 export const app = fastify();
 
 app.register(fastifyJwt, {
-  secret: '',
+  secret: process.env.JWT_TOKEN ?? '',
 });
 app.register(appRoutes);
