@@ -9,11 +9,11 @@
     "start": "node build/server.js",
     "test:create-prisma-environment": "npm link ./prisma/vitest-environment-prisma",
     "test:install-prisma-environment": "npm link vitest-environment-prisma",
-    "pretest:e2e": "run-s test:create-prisma-environment test:install-prisma-environment",
     "build": "tsup src --out-dir build",
     "test": "vitest dir src/application/use-cases",
     "coverage": "vitest run --coverage",
-    "test:e2e": "vitest run --dir src/infra/http"
+    "pretest:e2e": "run-s test:create-prisma-environment test:install-prisma-environment",
+    "test:e2e": "vitest run --dir src/infra/http/controllers"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"

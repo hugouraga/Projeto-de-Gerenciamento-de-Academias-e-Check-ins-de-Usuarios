@@ -1,5 +1,5 @@
-import { it } from 'vitest';
+import { it, test } from 'vitest';
 
-it('teste', () => {
+test('teste', () => {
   console.log('passando pelo test e2e');
 });
