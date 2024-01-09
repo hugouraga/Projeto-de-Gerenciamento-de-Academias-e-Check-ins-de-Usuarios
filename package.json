@@ -8,9 +8,9 @@
     "dev": "tsx watch src/server.ts",
     "start": "node build/server.js",
     "build": "tsup src --out-dir build",
-    "test": "vitest",
-    "test:e2e": "vitest src/infra/http/*",
-    "coverage": "vitest run --coverage"
+    "test": "vitest dir src/application/use-cases",
+    "coverage": "vitest run --coverage",
+    "test:e2e": "vitest run --dir src/infra/http/*"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
